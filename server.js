@@ -2,7 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import morgan from 'morgan'
 import {configDotenv} from 'dotenv'
-
+import {PrismaPg} from "@prisma/adapter-pg";
 
 let movies = [
   {id: 1, title: "Inception", year: 2010},
@@ -21,6 +21,12 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 app.use(morgan("dev"))
+
+import {PrismaClient} from '@prisma/client';
+
+const prisma = new PrismaClient({
+  adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
+})
 
 app.get('/movies', (req, res) => {
     res.status(200).json({message: "Lista de filmes acessada.", movies: movies})
@@ -215,6 +221,19 @@ app.delete('/tasks/:id', (req, res) => {
     res.status(200).json({message: "Rota de Delete acessada.", updatedTasksList: tasks})
 })
 
+
+app.get('/prisma/tasks', async (req, res) => {
+    try {
+
+        console.log("aqi")
+
+        const prismaTasks = await prisma.task.findMany();
+        res.status(200).json({ data: prismaTasks});
+    }   catch (err) {
+        console.error(err);
+        res.status(300).json({message: "Erro ao buscar tarefas no banco"});
+    }
+});
 
 const port = process.env.SERVER_PORT || 3000
 

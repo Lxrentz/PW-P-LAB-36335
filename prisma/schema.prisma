@@ -1,0 +1,14 @@
+datasource db {
+  provider = "postgresql"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Task {
+  id Int @id @default(autoincrement())
+  completead Boolean @default(false)
+  title String
+  priority String
+}
