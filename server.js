@@ -14,8 +14,6 @@ let tasks = [
   { id: 2, title: "Fazer LAB-1", completed: true, priority: "medium" }
 ];
 
-// MOVIES
-
 configDotenv()
 const app = express()
 app.use(cors())
@@ -106,8 +104,6 @@ app.delete('/movies/:id', (req, res) => {
 
     res.status(200).json({message: "Rota de Delete acessada.", updatedMoviesList: movies})
 })
-
-// TASKS
 
 app.get('/tasks', (req, res) => {
     const {completed} = req.query
@@ -234,6 +230,8 @@ app.get('/prisma/tasks', async (req, res) => {
         res.status(300).json({message: "Erro ao buscar tarefas no banco"});
     }
 });
+
+app.post('/auth/signup')
 
 const port = process.env.SERVER_PORT || 3000
 
