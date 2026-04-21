@@ -1,0 +1,38 @@
+{
+  "name": "pw-p-lab-36335",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "author": "Henrique Lorentz",
+  "license": "ISC",
+  "description": "API REST - Programação Web",
+  "type": "module",
+  "dependencies": {
+    "@prisma/adapter-pg": "^7.5.0",
+    "@prisma/client": "^7.7.0",
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "morgan": "^1.10.1",
+    "pg": "^8.20.0"
+  },
+  "devDependencies": {
+    "dotenv": "^17.4.1",
+    "nodemon": "^3.1.14",
+    "prisma": "^7.7.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lxrentz/PW-P-LAB-36335.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/Lxrentz/PW-P-LAB-36335/issues"
+  },
+  "homepage": "https://github.com/Lxrentz/PW-P-LAB-36335#readme"
+}
